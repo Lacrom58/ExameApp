@@ -32,11 +32,6 @@ extension Buttons {
         
         heightAnchor.constraint(equalToConstant: 40).isActive = true
         widthAnchor.constraint(equalToConstant: 100).isActive = true
-       
 
-     
-       
-        
-      
     }
 }

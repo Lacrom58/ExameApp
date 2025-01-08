@@ -7,7 +7,16 @@
 
 import UIKit
 
-class ManageMusicGenres {
+protocol MusicGenreManageable {
+    func getMusicGenre() -> MusicGenre
+    func addGenre(_ genre: [MusicGenre])
+    func getFirstMusicGenre() -> MusicGenre?
+    func getLastMusicGenre() -> MusicGenre
+    func getNextMusicGenre() -> MusicGenre
+    
+}
+
+class ManageMusicGenres: MusicGenreManageable {
     
     private var music: [MusicGenre] = []
     private var nextMusicGenre = 0
@@ -24,11 +33,12 @@ class ManageMusicGenres {
     }
     
     func getFirstMusicGenre() -> MusicGenre? {
-        music.first
+        nextMusicGenre = 0
+        return music[nextMusicGenre]
     }
     
     func getLastMusicGenre() -> MusicGenre {
-        if nextMusicGenre < music.count - 1 {
+        if nextMusicGenre != 0 {
             nextMusicGenre -= 1
         }
         return getMusicGenre()

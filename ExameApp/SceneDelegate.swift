@@ -16,9 +16,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        let repository = MusicGenresRepository()
+        let manage = ManageMusicGenres()
+        manage.addGenre(repository.getGenre())
+        let viewController = ViewController()
+        
+        viewController.repository = repository
+        viewController.manage = manage
+        
         let window = UIWindow(windowScene: windowScene)
         
-        window.rootViewController = ViewController()
+        window.rootViewController = viewController
         
         window.makeKeyAndVisible()
         

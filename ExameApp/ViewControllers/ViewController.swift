@@ -9,9 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private let repository = MusicGenresRepository()
-    private let manage = ManageMusicGenres()
-    
     private let imageView = ImageView(imageName: ImageViewType.techno.rawValue)
     private let textLabel = UILabel()
     private let stackView = UIStackView()
@@ -21,6 +18,8 @@ class ViewController: UIViewController {
     private let buttonTwo = Buttons(textButton: "Last", bgColor: .systemIndigo, textColor: .white)
     private let buttonThree = Buttons(textButton: "Next", bgColor: .white, textColor: .black)
     
+    var repository: RepositoryManagable = MusicGenresRepository()
+    var manage: MusicGenreManageable = ManageMusicGenres()
     
     
     override func viewDidLoad() {
@@ -33,12 +32,13 @@ class ViewController: UIViewController {
         view.addSubview(stackView)
         setupButtonsStack()
         view.addSubview(buttonsStack)
+        view.addSubview(buttonOne)
         setupLabel()
         addAction()
         addActionTwo()
         addActionThreee()
         setupLayout()
-        buttonsConstraints()
+        
         
        
     }
@@ -104,7 +104,6 @@ extension ViewController {
             
             stackView.addArrangedSubview(imageView)
             stackView.addArrangedSubview(textLabel)
-            stackView.addArrangedSubview(buttonOne)
             
         }
         
@@ -115,7 +114,6 @@ extension ViewController {
             buttonsStack.spacing = 100
             
             buttonsStack.addArrangedSubview(buttonTwo)
-            buttonsStack.addSubview(buttonOne)
             buttonsStack.addArrangedSubview(buttonThree)
             
             
@@ -133,28 +131,12 @@ extension ViewController {
     }
 
 
-// MARK: Buttons Constraints
-extension ViewController {
-    private func buttonsConstraints() {
-        buttonsStack.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            buttonsStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 600),
-            buttonsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonsStack.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
-            
-            buttonOne.centerXAnchor.constraint(equalTo: buttonsStack.centerXAnchor),
-            buttonOne.bottomAnchor.constraint(equalTo: buttonsStack.bottomAnchor, constant: 150)
-
-        ])
-    }
-}
-
 // MARK: Setup Layout
 extension ViewController {
     private func setupLayout() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         textLabel.translatesAutoresizingMaskIntoConstraints = false
+        buttonsStack.translatesAutoresizingMaskIntoConstraints = false
        
 
         NSLayoutConstraint.activate([
@@ -163,6 +145,13 @@ extension ViewController {
             stackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             
             imageView.heightAnchor.constraint(equalTo: stackView.widthAnchor),
+    
+            buttonsStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 600),
+            buttonsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonsStack.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+                
+            buttonOne.centerXAnchor.constraint(equalTo: buttonsStack.centerXAnchor),
+            buttonOne.bottomAnchor.constraint(equalTo: buttonsStack.bottomAnchor, constant: 150)
             
 
         ])

@@ -7,8 +7,11 @@
 
 import UIKit
 
-
-class MusicGenresRepository{
+protocol RepositoryManagable{
+    func getGenre() -> [MusicGenre]
+    
+}
+class MusicGenresRepository: RepositoryManagable{
     
     func getGenre() -> [MusicGenre] {
         return [
