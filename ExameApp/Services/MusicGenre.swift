@@ -7,12 +7,17 @@
 
 import Foundation
 
-struct MusicGenre {
-    var image: String
-    var description: String
+struct MusicGenre: CustomStringConvertible {
     
-    var full: String {
-        image + description
+    var description: String {
+        "Название картинки: \(image), описание: \(fullMusicInfo)."
+    }
+    
+    var image: String
+    var fullMusicInfo:String
+    
+    static func < (lhs: MusicGenre, rhs: MusicGenre) -> Bool {
+        lhs.image < rhs.image
     }
     
 }

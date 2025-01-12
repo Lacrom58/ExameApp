@@ -49,23 +49,25 @@ class ViewController: UIViewController {
     
     @objc
     private func buttonTapped() {
-        let nextMusicGenre = manage.getNextMusicGenre()
-        textLabel.text = nextMusicGenre.full
-        imageView.image = UIImage(named: nextMusicGenre.image)
+        getMusicGenres(manage.getNextMusicGenre())
+       
     }
     
     @objc
     private func buttonGetLastMusicGenre() {
-        let nextMusicGenre = manage.getLastMusicGenre()
-        textLabel.text = nextMusicGenre.full
-        imageView.image = UIImage(named: nextMusicGenre.image)
-        }
+        getMusicGenres(manage.getLastMusicGenre())
+        
+    }
     
     @objc
     private func buttonGetFisrtMusicGenre() {
-        let getFirst = manage.getFirstMusicGenre()
-        textLabel.text = getFirst?.full
-        imageView.image  = UIImage(named: getFirst?.image ?? "")
+       getMusicGenres(manage.getFirstMusicGenre())
+        
+    }
+    
+    private func getMusicGenres(_ value: MusicGenre?) {
+        textLabel .text = value?.description
+        imageView.image = UIImage(named: value?.image ?? "")
     }
 }
 
@@ -137,6 +139,7 @@ extension ViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         buttonsStack.translatesAutoresizingMaskIntoConstraints = false
+        buttonOne.translatesAutoresizingMaskIntoConstraints = false
        
 
         NSLayoutConstraint.activate([
@@ -150,8 +153,8 @@ extension ViewController {
             buttonsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonsStack.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
                 
-            buttonOne.centerXAnchor.constraint(equalTo: buttonsStack.centerXAnchor),
-            buttonOne.bottomAnchor.constraint(equalTo: buttonsStack.bottomAnchor, constant: 150)
+            buttonOne.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            buttonOne.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             
 
         ])

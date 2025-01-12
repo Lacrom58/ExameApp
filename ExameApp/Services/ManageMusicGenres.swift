@@ -18,8 +18,8 @@ protocol MusicGenreManageable {
 
 class ManageMusicGenres: MusicGenreManageable {
     
-    private var music: [MusicGenre] = []
-    private var nextMusicGenre = 0
+     var music: [MusicGenre] = []
+     var nextMusicGenre = 0
     
     
     func getMusicGenre() -> MusicGenre {
