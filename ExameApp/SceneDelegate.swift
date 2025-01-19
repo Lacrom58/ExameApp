@@ -18,14 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let repository = MusicGenresRepository()
         let manage = ManageMusicGenres()
-        manage.music.sort(by:<)
         
-        func sortByArray() {
-            for music in manage.music {
-                print(music.image)
-            }
-        }
-    
+        var genre = repository.getGenre()
+        genre.sort(by:<)
+   
         manage.addGenre(repository.getGenre())
         let viewController = ViewController()
         

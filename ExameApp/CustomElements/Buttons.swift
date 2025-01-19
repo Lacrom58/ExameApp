@@ -7,7 +7,13 @@
 
 import UIKit
 
+@objc protocol IButtonsDelegate {
+    func pressedButton(_ button: UIButton)
+}
+
 class Buttons: UIButton {
+    
+    var delegate: IButtonsDelegate?
     
     init(textButton: String, bgColor: UIColor, textColor: UIColor) {
         super.init(frame: .zero)
@@ -21,6 +27,14 @@ class Buttons: UIButton {
 }
 
 extension Buttons {
+    
+    func addActions() {
+        let action = UIAction { _ in
+            self.delegate?.pressedButton(self)
+        }
+        addAction(action, for: .touchUpInside)
+        
+    }
     
     func setupButton(text: String, bgColor: UIColor, textColor: UIColor) {
         setTitle(text, for: .normal)

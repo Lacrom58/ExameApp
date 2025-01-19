@@ -19,11 +19,14 @@ class ViewController: UIViewController {
     private let buttonThree = Buttons(textButton: "Next", bgColor: .white, textColor: .black)
     
     var repository: RepositoryManagable = MusicGenresRepository()
-    var manage: MusicGenreManageable = ManageMusicGenres()
+    var manage: MusicGenreManageable!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        buttonOne.delegate = self
+        buttonTwo.delegate = self
+        buttonThree.delegate = self
         view.backgroundColor = .white
         updateGenre()
         
@@ -33,6 +36,7 @@ class ViewController: UIViewController {
         setupButtonsStack()
         view.addSubview(buttonsStack)
         view.addSubview(buttonOne)
+        setupImage()
         setupLabel()
         addAction()
         addActionTwo()
@@ -70,6 +74,20 @@ class ViewController: UIViewController {
         imageView.image = UIImage(named: value?.image ?? "")
     }
 }
+// MARK: Button Delegate
+extension ViewController: IButtonsDelegate{
+    func pressedButton(_ button: UIButton) {
+        if button == buttonOne {
+            print("Red button pressed")
+        } else if button == buttonTwo {
+            print("Indigo button pressed")
+        } else {
+            print("Cyan button pressed")
+        }
+    }
+    
+    
+}
 
 // MARK: Buttons Actions
 extension ViewController {
@@ -77,7 +95,8 @@ extension ViewController {
         buttonOne.addTarget(
             self,
             action: #selector(buttonGetFisrtMusicGenre),
-            for: .touchUpInside)
+            for: .touchUpInside) 
+        
     }
     
     private func addActionThreee(){
@@ -97,6 +116,10 @@ extension ViewController {
 
 // MARK: Setup View
 extension ViewController {
+    
+    private func setupImage() {
+        imageView.image = UIImage(named: manage.getFirstMusicGenre()?.image ?? "")
+    }
         
         private func setupStackView() {
             stackView.axis = .vertical
