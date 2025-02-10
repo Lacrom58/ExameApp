@@ -9,6 +9,7 @@ import UIKit
 
 class ImageView: UIImageView {
     
+    var nameImage: String?
     
     init(imageName: String) {
         super.init(frame: .zero)

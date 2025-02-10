@@ -13,6 +13,8 @@ import UIKit
 
 class Buttons: UIButton {
     
+    var buttonName: String?
+    
     var delegate: IButtonsDelegate?
     
     init(textButton: String, bgColor: UIColor, textColor: UIColor) {

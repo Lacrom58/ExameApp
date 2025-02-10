@@ -27,10 +27,15 @@ class ViewController: UIViewController {
         buttonOne.delegate = self
         buttonTwo.delegate = self
         buttonThree.delegate = self
+        buttonOne.buttonName = "Button one"
+        buttonTwo.buttonName = "Button two"
+        buttonThree.buttonName = "Button three"
+        view.printNameButton(buttonOne, buttonTwo, buttonThree)
         view.backgroundColor = .white
         updateGenre()
         
-      
+        
+    
         setupStackView()
         view.addSubview(stackView)
         setupButtonsStack()
