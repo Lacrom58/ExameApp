@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     private let textLabel = UILabel()
     private let stackView = UIStackView()
     
+    
     private let buttonsStack = UIStackView()
     private let buttonOne = Buttons(textButton: "First", bgColor: .red, textColor: .white)
     private let buttonTwo = Buttons(textButton: "Last", bgColor: .systemIndigo, textColor: .white)
@@ -20,6 +21,14 @@ class ViewController: UIViewController {
     
     var repository: RepositoryManagable = MusicGenresRepository()
     var manage: MusicGenreManageable!
+
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        imageView.isHidden = false
+        textLabel.text =  manage.getMusicGenre().image
+        
+    }
     
     
     override func viewDidLoad() {
