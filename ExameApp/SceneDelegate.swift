@@ -28,11 +28,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         viewController.repository = repository
         viewController.manage = manage
         
+        let findViewController = FindImageViewController()
+        findViewController.manage = manage
+        
+        let panImageViewController = PanImageViewController()
+        panImageViewController.manage = manage
+        
+     
+    
         
         
         let window = UIWindow(windowScene: windowScene)
         
-        window.rootViewController = viewController
+        window.rootViewController = panImageViewController
         
         window.makeKeyAndVisible()
         

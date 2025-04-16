@@ -51,4 +51,15 @@ class ManageMusicGenres: MusicGenreManageable {
         }
         return getMusicGenre()
     }
+    
+    func searchImageName(_ name: String) -> MusicGenre? {
+        for genre in music {
+            if genre.image == name {
+                return genre
+            }
+            
+        }
+        return nil
+    }
+
 }

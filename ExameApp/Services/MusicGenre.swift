@@ -10,7 +10,7 @@ import Foundation
 struct MusicGenre {
     
     var image: String
-    var fullMusicInfo:String
+    var fullMusicInfo: String
     
     static func < (lhs: MusicGenre, rhs: MusicGenre) -> Bool {
         lhs.image < rhs.image
