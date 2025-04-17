@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     
     var repository: RepositoryManagable = MusicGenresRepository()
     var manage: MusicGenreManageable!
+    var scrollManage: TextManager!
 
     
     

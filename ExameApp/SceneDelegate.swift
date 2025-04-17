@@ -19,6 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let repository = MusicGenresRepository()
         let manage = ManageMusicGenres()
         
+        let scrollManage = TextManager()
+        
         var genre = repository.getGenre()
         genre.sort(by:<)
    
@@ -27,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         viewController.repository = repository
         viewController.manage = manage
+        viewController.scrollManage = scrollManage
         
         let findViewController = FindImageViewController()
         findViewController.manage = manage
@@ -34,13 +37,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let panImageViewController = PanImageViewController()
         panImageViewController.manage = manage
         
+        let licenseAgreementViewController = LicenseAgreementViewController()
+        licenseAgreementViewController.scrollManage = scrollManage
+        
+        
+        
      
     
         
         
         let window = UIWindow(windowScene: windowScene)
         
-        window.rootViewController = panImageViewController
+        window.rootViewController = licenseAgreementViewController
         
         window.makeKeyAndVisible()
         
